@@ -113,3 +113,52 @@ for key in ${!Doublet[@]}
 				break
 		fi
 done
+
+echo "----TripletCombination----"
+
+declare -A Triplet
+
+Triplet[HHH]=0;
+Triplet[TTT]=0
+Triplet[HHT]=0;
+Triplet[HTH]=0;
+Triplet[THH]=0;
+Triplet[THT]=0
+Triplet[TTH]=0;
+Triplet[HTT]=0;
+for (( i=0; i<$number; i++ ))
+
+do
+        random=$(( $RANDOM%8 ))
+        if [ $random -eq 0 ]
+        then
+                 Triplet[HHH]=$(((${Triplet[HHH]})+1));
+        elif [ $random -eq 1 ]
+        then
+                Triplet[TTT]=$(((${Triplet[TTT]})+1));
+        elif [ $random -eq 2 ]
+        then
+                Triplet[HHT]=$(((${Triplet[HHT]})+1));
+        elif [ $random -eq 3 ]
+        then
+                 Triplet[HTH]=$(((${Triplet[HTH]})+1));
+        elif [ $random -eq 4 ]
+        then
+                 Triplet[THH]=$(((${Triplet[THH]})+1));
+        elif [ $random -eq 5 ]
+        then
+                Triplet[THT]=$(((${Triplet[THT]})+1));
+        elif [ $random -eq 6 ]
+        then
+                Triplet[TTH]=$(((${Triplet[TTH]})+1));
+        else
+                 Triplet[HTT]=$(((${Triplet[HTT]})+1));
+        fi
+done
+count=1;
+for key in ${!Triplet[@]}
+do
+        Triplet[$key]=$(( (${Triplet[$key]} * 100) / $number));
+        arr[count++]=${Triplet[$key]}
+        echo " $key : ${Triplet[$key]} "
+done
