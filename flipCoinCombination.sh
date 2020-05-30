@@ -18,7 +18,7 @@ function getFlipCoin()
 					else
 							combination=$combination"T"
 					fi
-				done
+			done
 			Dict[$combination]=$((${Dict[$combination]}+1))
 			echo $combination : ${Dict[$combination]}
 	done
@@ -30,9 +30,9 @@ function getWinnerPercentage()
 	echo "Winner is "
 	for key in ${!Dict[@]}
 	do
-			var1=${Dict[$key]}
-			echo "$key    $(( ($var1 * 100 ) / $numOfFlip ))%"
-		done | sort -k2 -nr | head -1
+		var1=${Dict[$key]}
+		echo "$key    $(( ($var1 * 100 ) / $numOfFlip ))%"
+	done | sort -k2 -nr | head -1
 }
 
 function main ()
@@ -42,9 +42,9 @@ function main ()
 
 	case $numOfCoin in
 	1)	getFlipCoin	1	$numOfFlip	;;
-	2) getFlipCoin 2	$numOfFlip	;;
-	3) getFlipCoin 3	$numOfFlip	;;
-	*)	echo "Incorrect Option"	;;
+	2) getFlipCoin	2	$numOfFlip	;;
+	3) getFlipCoin	3	$numOfFlip	;;
+	*)	echo "Incorrect Option"		;;
 	esac
 }
 
