@@ -34,7 +34,7 @@ function perCal()
     do
       var1=${Dict[$key]}
       echo "$key    $(( ($var1 * 100 ) / $flip ))%"
-    done | sort -k2 -nr | awk 'NR==1{print $1" "$2}'
+    done | sort -k2 -nr | head -1
 }
 read -p "Enter for : 1.Singlet 2.Doublet 3.Triplet " coin
 read -p "Enter How Many Times to Flip " flip
