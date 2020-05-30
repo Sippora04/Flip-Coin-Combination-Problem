@@ -22,15 +22,14 @@ function getFlipCoin()
 			Dict[$combination]=$((${Dict[$combination]}+1))
 			echo $combination : ${Dict[$combination]}
 	done
-	getWinnerPercentage ${!Dict[@]}
+	getWinnerPercentage
 }
 
 function getWinnerPercentage()
 {
-	var=${@}
 	echo "Winner is "
-	for key in $var
-		do
+	for key in ${!Dict[@]}
+	do
 			var1=${Dict[$key]}
 			echo "$key    $(( ($var1 * 100 ) / $numOfFlip ))%"
 		done | sort -k2 -nr | head -1
